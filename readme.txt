@@ -30,6 +30,7 @@
   |  |  |  +--LPC13xx/    - Drivers for LPC13xx platform.
   |  |  |  +--LPC214x/    - Drivers for LPC214x platform.
   |  |  |  +--LPC8xx/     - Drivers for LPC8xx platform.
+  |  |  |  +--MK20D5/     - Drivers for MK20D5 platform.
   |  |  |  +--MSP430/     - Drivers for MSP430 platform.
   |  |  |  +--SPC5xx/     - Drivers for all SPC5xx platform (common).
   |  |  |  +--SPC560BCxx/ - Drivers for SPC560BCxx platform.
