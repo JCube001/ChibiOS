@@ -1,19 +1,19 @@
 # List of all the template platform files.
-PLATFORMSRC = ${CHIBIOS}/os/hal/templates/hal_lld.c \
-              ${CHIBIOS}/os/hal/templates/adc_lld.c \
-              ${CHIBIOS}/os/hal/templates/can_lld.c \
-              ${CHIBIOS}/os/hal/templates/ext_lld.c \
-              ${CHIBIOS}/os/hal/templates/gpt_lld.c \
- 			  ${CHIBIOS}/os/hal/templates/i2c_lld.c \
-              ${CHIBIOS}/os/hal/templates/icu_lld.c \
-              ${CHIBIOS}/os/hal/templates/mac_lld.c \
-              ${CHIBIOS}/os/hal/templates/pal_lld.c \
-              ${CHIBIOS}/os/hal/templates/pwm_lld.c \
-              ${CHIBIOS}/os/hal/templates/sdc_lld.c \
-              ${CHIBIOS}/os/hal/templates/serial_lld.c \
-              ${CHIBIOS}/os/hal/templates/spi_lld.c \
-              ${CHIBIOS}/os/hal/templates/uart_lld.c \
-              ${CHIBIOS}/os/hal/templates/usb_lld.c
+PLATFORMSRC = ${CHIBIOS}/os/hal/MK20D5/hal_lld.c \
+              ${CHIBIOS}/os/hal/MK20D5/adc_lld.c \
+              ${CHIBIOS}/os/hal/MK20D5/can_lld.c \
+              ${CHIBIOS}/os/hal/MK20D5/ext_lld.c \
+              ${CHIBIOS}/os/hal/MK20D5/gpt_lld.c \
+ 			  ${CHIBIOS}/os/hal/MK20D5/i2c_lld.c \
+              ${CHIBIOS}/os/hal/MK20D5/icu_lld.c \
+              ${CHIBIOS}/os/hal/MK20D5/mac_lld.c \
+              ${CHIBIOS}/os/hal/MK20D5/pal_lld.c \
+              ${CHIBIOS}/os/hal/MK20D5/pwm_lld.c \
+              ${CHIBIOS}/os/hal/MK20D5/sdc_lld.c \
+              ${CHIBIOS}/os/hal/MK20D5/serial_lld.c \
+              ${CHIBIOS}/os/hal/MK20D5/spi_lld.c \
+              ${CHIBIOS}/os/hal/MK20D5/uart_lld.c \
+              ${CHIBIOS}/os/hal/MK20D5/usb_lld.c
 
 # Required include directories
-PLATFORMINC = ${CHIBIOS}/os/hal/templates
+PLATFORMINC = ${CHIBIOS}/os/hal/MK20D5
