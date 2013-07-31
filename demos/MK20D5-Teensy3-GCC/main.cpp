@@ -18,7 +18,6 @@
 #include "hal.h"
 #include "fs.hpp"
 #include "fatfs_fsimpl.hpp"
-#include "test.h"
 
 using namespace chibios_rt;
 using namespace chibios_fatfs;

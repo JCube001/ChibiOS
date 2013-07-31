@@ -203,6 +203,4 @@ else
   DDEFS += -DCORTEX_USE_FPU=FALSE
 endif
 
-USE_OPT += -DUSE_STDPERIPH_DRIVER
-
 include $(CHIBIOS)/os/ports/GCC/ARMCMx/rules.mk
