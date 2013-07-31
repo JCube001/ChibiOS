@@ -23,11 +23,6 @@ ifeq ($(USE_LINK_GC),)
   USE_LINK_GC = yes
 endif
 
-# If enabled, this option allows to compile the application in THUMB mode.
-ifeq ($(USE_THUMB),)
-  USE_THUMB = yes
-endif
-
 # Enable this if you want to see the full log while compiling.
 ifeq ($(USE_VERBOSE_COMPILE),)
   USE_VERBOSE_COMPILE = no
@@ -41,16 +36,11 @@ endif
 # Architecture or project specific options
 #
 
-# Enables the use of FPU on Cortex-M4.
-# Enable this if you really want to use the STM FWLib.
-ifeq ($(USE_FPU),)
-  USE_FPU = no
-endif
+# The Kinetis K20 50MHz line has no Cortex-M4 FPU.
+USE_FPU = no
 
-# Enable this if you really want to use the STM FWLib.
-ifeq ($(USE_FWLIB),)
-  USE_FWLIB = no
-endif
+# Can only be used in THUMB mode.
+USE_THUMB = yes
 
 #
 # Architecture or project specific options
@@ -65,17 +55,16 @@ PROJECT = ch
 
 # Imported source files and paths
 CHIBIOS = ../..
-include $(CHIBIOS)/boards/ST_STM32F4_DISCOVERY/board.mk
-include $(CHIBIOS)/os/hal/platforms/STM32F4xx/platform.mk
+include $(CHIBIOS)/boards/PJRC_TEENSY_3/board.mk
+include $(CHIBIOS)/os/hal/platforms/MK20D5/platform.mk
 include $(CHIBIOS)/os/hal/hal.mk
-include $(CHIBIOS)/os/ports/GCC/ARMCMx/STM32F4xx/port.mk
+include $(CHIBIOS)/os/ports/GCC/ARMCMx/MK20D5/port.mk
 include $(CHIBIOS)/os/kernel/kernel.mk
 include $(CHIBIOS)/os/various/cpp_wrappers/kernel.mk
 include $(CHIBIOS)/test/test.mk
 
 # Define linker script file here
-LDSCRIPT= $(PORTLD)/STM32F407xG.ld
-#LDSCRIPT= $(PORTLD)/STM32F407xG_CCM.ld
+LDSCRIPT= $(PORTLD)/MK20DX128.ld
 
 # C sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
@@ -214,11 +203,6 @@ else
   DDEFS += -DCORTEX_USE_FPU=FALSE
 endif
 
-ifeq ($(USE_FWLIB),yes)
-  include $(CHIBIOS)/ext/stm32lib/stm32lib.mk
-  CSRC += $(STM32SRC)
-  INCDIR += $(STM32INC)
-  USE_OPT += -DUSE_STDPERIPH_DRIVER
-endif
+USE_OPT += -DUSE_STDPERIPH_DRIVER
 
 include $(CHIBIOS)/os/ports/GCC/ARMCMx/rules.mk

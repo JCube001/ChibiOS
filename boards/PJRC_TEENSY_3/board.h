@@ -18,14 +18,14 @@
 #define _BOARD_H_
 
 /*
- * Setup for STMicroelectronics STM32F4-Discovery board.
+ * Setup for PJRC Teensy 3.0 board.
  */
 
 /*
  * Board identifier.
  */
-#define BOARD_ST_STM32F4_DISCOVERY
-#define BOARD_NAME                  "STMicroelectronics STM32F4-Discovery"
+#define BOARD_PJRC_TEENSY_3
+#define BOARD_NAME                  "PJRC Teensy 3.0"
 
 
 /*
