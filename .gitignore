@@ -1,6 +1,3 @@
-# Eclipse projects
-*.*project
-
 # Demo builds
 demos/**/build
 demos/**/.dep
