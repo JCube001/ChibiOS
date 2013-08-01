@@ -4,7 +4,7 @@ PLATFORMSRC = ${CHIBIOS}/os/hal/platforms/MK20D5/hal_lld.c \
               ${CHIBIOS}/os/hal/platforms/MK20D5/can_lld.c \
               ${CHIBIOS}/os/hal/platforms/MK20D5/ext_lld.c \
               ${CHIBIOS}/os/hal/platforms/MK20D5/gpt_lld.c \
- 			  ${CHIBIOS}/os/hal/platforms/MK20D5/i2c_lld.c \
+              ${CHIBIOS}/os/hal/platforms/MK20D5/i2c_lld.c \
               ${CHIBIOS}/os/hal/platforms/MK20D5/icu_lld.c \
               ${CHIBIOS}/os/hal/platforms/MK20D5/mac_lld.c \
               ${CHIBIOS}/os/hal/platforms/MK20D5/pal_lld.c \
