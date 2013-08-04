@@ -52,8 +52,7 @@ const PALConfig pal_default_config =
  *          and before any other initialization.
  */
 void __early_init(void) {
-
-  stm32_clock_init();
+  mk20d5_clock_init();
 }
 
 #if HAL_USE_SDC || defined(__DOXYGEN__)

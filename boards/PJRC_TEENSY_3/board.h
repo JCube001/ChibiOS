@@ -27,30 +27,17 @@
 #define BOARD_PJRC_TEENSY_3
 #define BOARD_NAME                  "PJRC Teensy 3.0"
 
-
 /*
- * Board oscillators-related settings.
- * NOTE: LSE not fitted.
+ * Board system clock speed.
  */
-#if !defined(STM32_LSECLK)
-#define STM32_LSECLK                0
+#if !defined(MK20D5_SYSCLK)
+#define MK20D5_SYSCLK               50000000
 #endif
 
-#if !defined(STM32_HSECLK)
-#define STM32_HSECLK                8000000
-#endif
-
-
 /*
- * Board voltages.
- * Required for performance limits calculation.
+ * MCU type as defined in the Freescale header file MK20D5.h.
  */
-#define STM32_VDD                   300
-
-/*
- * MCU type as defined in the ST header file stm32f4xx.h.
- */
-#define STM32F4XX
+#define MK20D5
 
 /*
  * IO pins assignments.
