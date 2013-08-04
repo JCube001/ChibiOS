@@ -59,7 +59,7 @@ void hal_lld_init(void) {
 }
 
 /**
- * @brief   Platform early initialization.
+ * @brief   MK20D5 clock initialization.
  * @note    All the involved constants come from the file @p board.h.
  * @note    This function is meant to be invoked early during the system
  *          initialization, it is usually invoked from the file
@@ -67,7 +67,7 @@ void hal_lld_init(void) {
  *
  * @special
  */
-void platform_early_init(void) {
+void mk20d5_clock_init(void) {
 
 }
 
