@@ -33,8 +33,10 @@ __process_stack_size__  = 0x0400;
 
 MEMORY
 {
-    flash : org = 0x00000000, len = 128k
-    ram : org = 0x1FFFE000, len = 16k
+    flash0   : org = 0x00000000, len = 0xF8
+    flashcfg : org = 0x00000400, len = 0x10
+    flash    : org = 0x00000410, len = 128k - 0x410
+    ram      : org = 0x1FFFE000, len = 16k
 }
 
 __ram_start__           = ORIGIN(ram);
@@ -46,14 +48,18 @@ ENTRY(ResetHandler)
 SECTIONS
 {
     . = 0;
-    _text = .;
 
-    startup : ALIGN(16) SUBALIGN(16)
+    startup : ALIGN(4) SUBALIGN(4)
     {
         KEEP(*(vectors))
-        . = 0x400;
-        KEEP(*(flashconfig))
-    } > flash
+    } > flash0
+    
+    cfmprotect : ALIGN(4) SUBALIGN(4)
+    {
+        KEEP(*(cfmconfig))
+    } > flashcfg
+
+    _text = .;
 
     constructors : ALIGN(4) SUBALIGN(4)
     {
@@ -71,7 +77,7 @@ SECTIONS
         PROVIDE(__fini_array_end = .);
     } > flash
 
-    .text : ALIGN(16) SUBALIGN(16)
+    .text : ALIGN(4) SUBALIGN(4)
     {
         *(.text.startup.*)
         *(.text)

@@ -15,8 +15,8 @@
 */
 
 /**
- * @file    templates/pal_lld.h
- * @brief   PAL subsystem low level driver header template.
+ * @file    MK20D5/pal_lld.h
+ * @brief   PAL subsystem low level driver header.
  *
  * @addtogroup PAL
  * @{
@@ -31,22 +31,14 @@
 /* Unsupported modes and specific modes                                      */
 /*===========================================================================*/
 
+#define PIN_MUX_ALTERNATIVE(x)      PORT_PCR_MUX(x)
+
 /*===========================================================================*/
 /* I/O Ports Types and constants.                                            */
 /*===========================================================================*/
 
-/**
- * @brief   Generic I/O ports static initializer.
- * @details An instance of this structure must be passed to @p palInit() at
- *          system startup time in order to initialized the digital I/O
- *          subsystem. This represents only the initial setup, specific pads
- *          or whole ports can be reprogrammed at later time.
- * @note    Implementations may extend this structure to contain more,
- *          architecture dependent, fields.
- */
-typedef struct {
-
-} PALConfig;
+#define TOTAL_PORTS      5
+#define PADS_PER_PORT    32
 
 /**
  * @brief   Width, in bits, of an I/O port.
@@ -76,6 +68,29 @@ typedef uint32_t iomode_t;
  *          variables of this type.
  */
 typedef uint32_t ioportid_t;
+
+/**
+ * @brief   Port Configuration.
+ * @details This structure stores the configuration parameters of all pads
+ *          belonging to a port.
+ */
+typedef struct {
+    ioportid_t  port;
+    iomode_t    pads[PADS_PER_PORT];
+} PortConfig;
+
+/**
+ * @brief   Generic I/O ports static initializer.
+ * @details An instance of this structure must be passed to @p palInit() at
+ *          system startup time in order to initialized the digital I/O
+ *          subsystem. This represents only the initial setup, specific pads
+ *          or whole ports can be reprogrammed at later time.
+ * @note    Implementations may extend this structure to contain more,
+ *          architecture dependent, fields.
+ */
+typedef struct {
+    PortConfig  ports[TOTAL_PORTS];
+} PALConfig;
 
 /*===========================================================================*/
 /* I/O Ports Identifiers.                                                    */

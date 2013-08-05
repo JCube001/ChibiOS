@@ -158,6 +158,34 @@ vectors_t _vectors = {
 };
 
 /**
+ * @brief   Flash configuration values.
+ * @details This section has to be next after the interrupt vectors.
+ *          Please be careful when modifying any of the values below as
+ *          it can secure the flash (possibly permanently).
+ */
+#if !defined(__DOXYGEN__)
+__attribute__ ((section("cfmconfig")))
+#endif
+const uint8_t flashconfigbytes[16] = {
+    0xFF,   /**< Backdoor comparison key byte 0 */
+    0xFF,   /**< Backdoor comparison key byte 1 */
+    0xFF,   /**< Backdoor comparison key byte 2 */
+    0xFF,   /**< Backdoor comparison key byte 3 */
+    0xFF,   /**< Backdoor comparison key byte 4 */
+    0xFF,   /**< Backdoor comparison key byte 5 */
+    0xFF,   /**< Backdoor comparison key byte 6 */
+    0xFF,   /**< Backdoor comparison key byte 7 */
+    0xFF,   /**< FPROT0 */
+    0xFF,   /**< FPROT1 */
+    0xFF,   /**< FPROT2 */
+    0xFF,   /**< FPROT3 */
+    0xFE,   /**< FDPROT */
+    0xFF,   /**< FEPROT */
+    0xFF,   /**< FOPT   */
+    0xFF    /**< FSEC   */
+};
+
+/**
  * @brief   Unhandled exceptions handler.
  * @details Any undefined exception vector points to this function by default.
  *          This function simply stops the system into an infinite loop.
@@ -233,19 +261,5 @@ void VectorE8(void) __attribute__((weak, alias("_unhandled_exception")));
 void VectorEC(void) __attribute__((weak, alias("_unhandled_exception")));
 void VectorF0(void) __attribute__((weak, alias("_unhandled_exception")));
 void VectorF4(void) __attribute__((weak, alias("_unhandled_exception")));
-
-/**
- * @brief   Flash configuration values.
- * @details This section has to be next after the interrupt vectors.
- *          Please be careful when modifying any of the values below as
- *          it can secure the flash (possibly permanently): 0x400-0x409.
- */
-#if !defined(__DOXYGEN__)
-__attribute__ ((section("flashconfig")))
-#endif
-const uint8_t flashconfigbytes[16] = {
-    0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-    0xFF, 0xFF, 0xFF, 0xFF, 0xFE, 0xFF, 0xFF, 0xFF
-};
 
 /** @} */

@@ -23,6 +23,11 @@ ifeq ($(USE_LINK_GC),)
   USE_LINK_GC = yes
 endif
 
+# If enabled, this option allows to compile the application in THUMB mode.
+ifeq ($(USE_THUMB),)
+  USE_THUMB = yes
+endif
+
 # Enable this if you want to see the full log while compiling.
 ifeq ($(USE_VERBOSE_COMPILE),)
   USE_VERBOSE_COMPILE = no
@@ -35,12 +40,6 @@ endif
 ##############################################################################
 # Architecture or project specific options
 #
-
-# The Kinetis K20 50MHz line has no Cortex-M4 FPU.
-USE_FPU = no
-
-# Can only be used in THUMB mode.
-USE_THUMB = yes
 
 #
 # Architecture or project specific options
@@ -60,8 +59,6 @@ include $(CHIBIOS)/os/hal/platforms/MK20D5/platform.mk
 include $(CHIBIOS)/os/hal/hal.mk
 include $(CHIBIOS)/os/ports/GCC/ARMCMx/MK20D5/port.mk
 include $(CHIBIOS)/os/kernel/kernel.mk
-include $(CHIBIOS)/os/various/cpp_wrappers/kernel.mk
-include $(CHIBIOS)/test/test.mk
 
 # Define linker script file here
 LDSCRIPT= $(PORTLD)/MK20DX128.ld
@@ -70,16 +67,14 @@ LDSCRIPT= $(PORTLD)/MK20DX128.ld
 # setting.
 CSRC = $(PORTSRC) \
        $(KERNSRC) \
-       $(TESTSRC) \
        $(HALSRC) \
        $(PLATFORMSRC) \
-       $(BOARDSRC)
+       $(BOARDSRC) \
+       main.c
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
-CPPSRC = $(CHCPPSRC) \
-         $(CHIBIOS)/os/fs/fatfs/fatfs_fsimpl.cpp \
-         main.cpp
+CPPSRC =
 
 # C sources to be compiled in ARM mode regardless of the global setting.
 # NOTE: Mixing ARM and THUMB mode enables the -mthumb-interwork compiler
@@ -104,10 +99,8 @@ TCPPSRC =
 # List ASM source files here
 ASMSRC = $(PORTASM)
 
-INCDIR = $(PORTINC) $(KERNINC) $(TESTINC) \
-         $(HALINC) $(PLATFORMINC) $(BOARDINC) \
-         $(CHCPPINC) \
-         $(CHIBIOS)/os/various $(CHIBIOS)/os/fs $(CHIBIOS)/os/fs/fatfs
+INCDIR = $(PORTINC) $(KERNINC) \
+         $(HALINC) $(PLATFORMINC) $(BOARDINC)
 
 #
 # Project, sources and paths
@@ -195,12 +188,5 @@ ULIBS =
 #
 # End of user defines
 ##############################################################################
-
-ifeq ($(USE_FPU),yes)
-  USE_OPT += -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -fsingle-precision-constant
-  DDEFS += -DCORTEX_USE_FPU=TRUE
-else
-  DDEFS += -DCORTEX_USE_FPU=FALSE
-endif
 
 include $(CHIBIOS)/os/ports/GCC/ARMCMx/rules.mk

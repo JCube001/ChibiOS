@@ -17,11 +17,6 @@
 /**
  * @file    MK20D5/hal_lld.h
  * @brief   MK20D5 HAL subsystem low level driver header template.
- * @pre     This module requires the following macros to be defined in the
- *          @p board.h file:
- *          - MK20D5 (optional)
- *          - MK20D5_SYSCLK
- *          .
  *
  * @addtogroup HAL
  * @{
@@ -45,54 +40,7 @@
  * @name    Platform identification
  * @{
  */
-#define PLATFORM_NAME           "MK20D5 Kinetis K20 50 MHz"
-/** @} */
-
-/**
- * @name    Absolute maximum ratings
- * @{
- */
-/**
- * @brief   Maximum core clock frequency.
- */
-#define MK20D5_CORECLK_MAX      50000000
-
-/**
- * @brief   Minimum core clock frequency.
- */
-#define MK20D5_CORECLK_MIN      4000000
-
-/**
- * @brief   Maximum system clock frequency.
- * @note    Always the same as the core clock maximum.
- */
-#define MK20D5_SYSCLK_MAX       MK20D5_CORECLK_MAX
-
-/**
- * @brief   Minimum system clock frequency.
- * @note    Always the same as the core clock minimum.
- */
-#define MK20D5_SYSCLK_MIN       MK20D5_CORECLK_MIN
-
-/**
- * @brief   Maximum bus clock frequency.
- */
-#define MK20D5_BUSCLK_MAX       50000000
-
-/**
- * @brief   Minimum bus clock frequency.
- */
-#define MK20D5_BUSCLK_MIN       4000000
-
-/**
- * @brief   Maximum flash clock frequency.
- */
-#define MK20D5_FLASHCLK_MAX     25000000
-
-/**
- * @brief   Minimum flash clock frequency.
- */
-#define MK20D5_FLASHCLK_MIN     1000000
+#define PLATFORM_NAME           "Kinetis K20 50 MHz"
 /** @} */
 
 /*===========================================================================*/
@@ -195,12 +143,12 @@ typedef uint32_t halrtcnt_t;
  *
  * @notapi
  */
-#define hal_lld_get_counter_value()         DWT_CYCCNT
+#define hal_lld_get_counter_value()         0
 
 /**
  * @brief   Realtime counter frequency.
  * @note    The DWT_CYCCNT register is incremented directly by the system
- *          clock so this function returns STM32_HCLK.
+ *          clock so this function returns the clock frequency.
  *
  * @return              The realtime counter frequency of type halclock_t.
  *

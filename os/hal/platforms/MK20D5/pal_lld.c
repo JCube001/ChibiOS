@@ -15,8 +15,8 @@
 */
 
 /**
- * @file    templates/pal_lld.c
- * @brief   PAL subsystem low level driver template.
+ * @file    MK20D5/pal_lld.c
+ * @brief   PAL subsystem low level driver.
  *
  * @addtogroup PAL
  * @{
@@ -52,17 +52,31 @@
 /*===========================================================================*/
 
 /**
- * @brief   STM32 I/O ports configuration.
- * @details Ports A-D(E, F, G, H) clocks enabled.
+ * @brief   Kinetis I/O ports configuration.
+ * @details Ports A-E clocks enabled.
  *
- * @param[in] config    the STM32 ports configuration
+ * @param[in] config    the Kinetis ports configuration
  *
  * @notapi
  */
 void _pal_lld_init(const PALConfig *config) {
 
-  (void)config;
+    int i, j;
 
+    /* Enable clocking on all Ports */
+    SIM_SCGC5 |= SIM_SCGC5_PORTA_MASK |
+                 SIM_SCGC5_PORTB_MASK |
+                 SIM_SCGC5_PORTC_MASK |
+                 SIM_SCGC5_PORTD_MASK |
+                 SIM_SCGC5_PORTE_MASK;
+
+    for (i = 0; i < TOTAL_PORTS; i++) {
+        for (j = 0; j < PADS_PER_PORT; j++) {
+            /*pal_lld_setpadmode(config->ports[i].port,
+                               j,
+                               config->ports[i].pads[j]);*/
+        }
+    }
 }
 
 /**

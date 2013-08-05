@@ -14,28 +14,26 @@
     limitations under the License.
 */
 
-#ifndef _BOARD_H_
-#define _BOARD_H_
+#include "ch.h"
+#include "hal.h"
 
 /*
- * Setup for the PJRC Teensy 3.0 board.
+ * Application entry point.
  */
+int main(void) {
+    /*
+     * System initializations.
+     * - HAL initialization, this also initializes the configured device drivers
+     *   and performs the board-specific initializations.
+     * - Kernel initialization, the main() function becomes a thread and the
+     *   RTOS is active.
+     */
+    halInit();
+    chSysInit();
 
-/*
- * Board identifier.
- */
-#define BOARD_PJRC_TEENSY_3
-#define BOARD_NAME                  "PJRC Teensy 3.0"
+    while (TRUE) {
+        chThdSleepMilliseconds(1000);
+    }
 
-
-#if !defined(_FROM_ASM_)
-#ifdef __cplusplus
-extern "C" {
-#endif
-  void boardInit(void);
-#ifdef __cplusplus
+    return 0;
 }
-#endif
-#endif /* _FROM_ASM_ */
-
-#endif /* _BOARD_H_ */
