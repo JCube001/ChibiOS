@@ -152,6 +152,8 @@ typedef enum {
  * @}
  */ /* end of group Interrupt_vector_numbers */
 
+/* CHIBIOS FIX */
+#include "core_cm4.h"           /* Cortex-M4 processor and core peripherals */
 
 /* ----------------------------------------------------------------------------
    -- Peripheral type defines
