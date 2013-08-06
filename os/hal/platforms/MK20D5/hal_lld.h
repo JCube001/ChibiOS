@@ -25,7 +25,7 @@
 #ifndef _HAL_LLD_H_
 #define _HAL_LLD_H_
 
-#include "MK20D5.h"
+#include "mk20d5.h"
 
 /*===========================================================================*/
 /* Driver constants.                                                         */

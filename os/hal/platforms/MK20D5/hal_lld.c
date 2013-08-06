@@ -78,6 +78,7 @@ void hal_lld_init(void) {
  */
 void mk20d5_clock_init(void) {
 
+#if 0
     /* Unlock the watchdog and set to allow updates */
     WDOG_UNLOCK = 0xC520;
     WDOG_UNLOCK = 0xD928;
@@ -165,6 +166,16 @@ void mk20d5_clock_init(void) {
     /*
      * Now in PEE mode
      */
+
+    /* Configure USB for a 48 MHz clock (96 MHz PLL / 2) */
+    SIM_CLKDIV2 = SIM_CLKDIV2_USBDIV(1);
+
+    /* USB uses PLL clock, trace is CPU clock, CLKOUT = OSCERCLK0 */
+    SIM_SOPT2 = SIM_SOPT2_USBSRC_MASK |
+                SIM_SOPT2_PLLFLLSEL_MASK |
+                SIM_SOPT2_TRACECLKSEL_MASK |
+                SIM_SOPT2_CLKOUTSEL(6);
+#endif
 }
 
 /** @} */

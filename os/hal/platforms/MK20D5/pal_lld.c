@@ -61,6 +61,9 @@
  */
 void _pal_lld_init(const PALConfig *config) {
 
+    (void)config;
+
+#if 0
     int i, j;
 
     /* Enable clocking on all Ports */
@@ -72,11 +75,12 @@ void _pal_lld_init(const PALConfig *config) {
 
     for (i = 0; i < TOTAL_PORTS; i++) {
         for (j = 0; j < PADS_PER_PORT; j++) {
-            /*pal_lld_setpadmode(config->ports[i].port,
+            pal_lld_setpadmode(config->ports[i].port,
                                j,
-                               config->ports[i].pads[j]);*/
+                               config->ports[i].pads[j]);
         }
     }
+#endif
 }
 
 /**
