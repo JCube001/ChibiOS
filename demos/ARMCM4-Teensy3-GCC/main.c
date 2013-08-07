@@ -25,17 +25,15 @@ static WORKING_AREA(waThread1, 64);
 /*
  * LED blinker thread.
  */
-static msg_t Thread1(void *arg) {
+__attribute__((noreturn))
+static void Thread1(void *arg) {
     (void)arg;
-    unsigned int i = 0;
 
     chRegSetThreadName("LEDBlinker");
     while (TRUE) {
         palTogglePad(IOPORT3, 5);
         chThdSleepMilliseconds(500);
     }
-
-    return (msg_t)i;
 }
 
 /*
@@ -55,8 +53,8 @@ int main(void) {
     /*
      * Creates the blinker thread.
      */
-    (void)chThdCreateStatic(waThread1, sizeof(waThread1),
-                            NORMALPRIO, Thread1, NULL);
+    chThdCreateStatic(waThread1, sizeof(waThread1), NORMALPRIO,
+                      (tfunc_t)Thread1, NULL);
 
     /*
      * Halt if the thread dies for any reason.
