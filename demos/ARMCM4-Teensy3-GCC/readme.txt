@@ -4,7 +4,7 @@
 
 ** TARGET **
 
-The demo runs on an PJRC Teensy 3 board.
+The demo runs on a PJRC Teensy 3 board.
 
 ** The Demo **
 
