@@ -43,6 +43,130 @@
 /* Driver local functions.                                                   */
 /*===========================================================================*/
 
+/**
+ * @brief Reads a logical state from an I/O pad.
+ * @note The @ref PAL provides a default software implementation of this
+ * functionality, implement this function if can optimize it by using
+ * special hardware functionalities or special coding.
+ *
+ * @param[in] port port identifier
+ * @param[in] pad pad number within the port
+ * @return The logical state.
+ * @retval PAL_LOW low logical state.
+ * @retval PAL_HIGH high logical state.
+ *
+ * @notapi
+ */
+uint8_t _pal_lld_readpad(ioportid_t port, uint8_t pad) {
+    return (port->PDIR & ((uint32_t) 1 << pad)) ? PAL_HIGH : PAL_LOW;
+}
+
+/**
+ * @brief Writes a logical state on an output pad.
+ * @note This function is not meant to be invoked directly by the
+ * application code.
+ * @note The @ref PAL provides a default software implementation of this
+ * functionality, implement this function if can optimize it by using
+ * special hardware functionalities or special coding.
+ *
+ * @param[in] port port identifier
+ * @param[in] pad pad number within the port
+ * @param[in] bit logical value, the value must be @p PAL_LOW or
+ * @p PAL_HIGH
+ *
+ * @notapi
+ */
+void _pal_lld_writepad(ioportid_t port, uint8_t pad, uint8_t bit)
+{
+    if (bit == PAL_HIGH)
+        port->PDOR |= ((uint32_t) 1 << pad);
+    else
+        port->PDOR &= ~((uint32_t) 1 << pad);
+}
+
+/**
+ * @brief   Pad mode setup.
+ * @details This function programs a pad with the specified mode.
+ * @note    The @ref PAL provides a default software implementation of this
+ *          functionality, implement this function if can optimize it by using
+ *          special hardware functionalities or special coding.
+ * @note    Programming an unknown or unsupported mode is silently ignored.
+ *
+ * @param[in] port      port identifier
+ * @param[in] pad       pad number within the port
+ * @param[in] mode      pad mode
+ *
+ * @notapi
+ */
+void _pal_lld_setpadmode(ioportid_t port,
+                         uint8_t pad,
+                         iomode_t mode) {
+
+    PORT_TypeDef *portcfg = NULL;
+
+    chDbgAssert(pad <= 31, "pal_lld_setpadmode(), #1", "invalid pad");
+
+    if (mode == PAL_MODE_OUTPUT_PUSHPULL)
+        port->PDDR |= ((uint32_t) 1 << pad);
+    else
+        port->PDDR &= ~((uint32_t) 1 << pad);
+
+    if (port == IOPORT1)
+        portcfg = PORTA;
+    else if (port == IOPORT2)
+        portcfg = PORTB;
+    else if (port == IOPORT3)
+        portcfg = PORTC;
+    else if (port == IOPORT4)
+        portcfg = PORTD;
+    else if (port == IOPORT5)
+        portcfg = PORTE;
+
+    chDbgAssert(portcfg != NULL, "pal_lld_setpadmode(), #2", "invalid port");
+
+    switch (mode) {
+    case PAL_MODE_RESET:
+    case PAL_MODE_INPUT:
+    case PAL_MODE_OUTPUT_PUSHPULL:
+        portcfg->PCR[pad] = PIN_MUX_ALTERNATIVE(1);
+        break;
+    case PAL_MODE_INPUT_PULLUP:
+        portcfg->PCR[pad] = PIN_MUX_ALTERNATIVE(1) |
+                            PORT_PCR_PE_MASK |
+                            PORT_PCR_PS_MASK;
+        break;
+    case PAL_MODE_INPUT_PULLDOWN:
+        portcfg->PCR[pad] = PIN_MUX_ALTERNATIVE(1) |
+                            PORT_PCR_PE_MASK;
+        break;
+    case PAL_MODE_UNCONNECTED:
+    case PAL_MODE_INPUT_ANALOG:
+        portcfg->PCR[pad] = PIN_MUX_ALTERNATIVE(0);
+        break;
+    case PAL_MODE_ALTERNATIVE_1:
+        portcfg->PCR[pad] = PIN_MUX_ALTERNATIVE(1);
+        break;
+    case PAL_MODE_ALTERNATIVE_2:
+        portcfg->PCR[pad] = PIN_MUX_ALTERNATIVE(2);
+        break;
+    case PAL_MODE_ALTERNATIVE_3:
+        portcfg->PCR[pad] = PIN_MUX_ALTERNATIVE(3);
+        break;
+    case PAL_MODE_ALTERNATIVE_4:
+        portcfg->PCR[pad] = PIN_MUX_ALTERNATIVE(4);
+        break;
+    case PAL_MODE_ALTERNATIVE_5:
+        portcfg->PCR[pad] = PIN_MUX_ALTERNATIVE(5);
+        break;
+    case PAL_MODE_ALTERNATIVE_6:
+        portcfg->PCR[pad] = PIN_MUX_ALTERNATIVE(6);
+        break;
+    case PAL_MODE_ALTERNATIVE_7:
+        portcfg->PCR[pad] = PIN_MUX_ALTERNATIVE(7);
+        break;
+    }
+}
+
 /*===========================================================================*/
 /* Driver interrupt handlers.                                                */
 /*===========================================================================*/
@@ -61,17 +185,14 @@
  */
 void _pal_lld_init(const PALConfig *config) {
 
-    (void)config;
-
-#if 0
     int i, j;
 
     /* Enable clocking on all Ports */
-    SIM_SCGC5 |= SIM_SCGC5_PORTA_MASK |
-                 SIM_SCGC5_PORTB_MASK |
-                 SIM_SCGC5_PORTC_MASK |
-                 SIM_SCGC5_PORTD_MASK |
-                 SIM_SCGC5_PORTE_MASK;
+    SIM->SCGC5 |= SIM_SCGC5_PORTA_MASK |
+                  SIM_SCGC5_PORTB_MASK |
+                  SIM_SCGC5_PORTC_MASK |
+                  SIM_SCGC5_PORTD_MASK |
+                  SIM_SCGC5_PORTE_MASK;
 
     for (i = 0; i < TOTAL_PORTS; i++) {
         for (j = 0; j < PADS_PER_PORT; j++) {
@@ -80,7 +201,6 @@ void _pal_lld_init(const PALConfig *config) {
                                config->ports[i].pads[j]);
         }
     }
-#endif
 }
 
 /**

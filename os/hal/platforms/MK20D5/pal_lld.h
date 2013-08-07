@@ -31,6 +31,14 @@
 /* Unsupported modes and specific modes                                      */
 /*===========================================================================*/
 
+#define PAL_MODE_ALTERNATIVE_1      0x10
+#define PAL_MODE_ALTERNATIVE_2      0x11
+#define PAL_MODE_ALTERNATIVE_3      0x12
+#define PAL_MODE_ALTERNATIVE_4      0x13
+#define PAL_MODE_ALTERNATIVE_5      0x14
+#define PAL_MODE_ALTERNATIVE_6      0x15
+#define PAL_MODE_ALTERNATIVE_7      0x16
+
 #define PIN_MUX_ALTERNATIVE(x)      PORT_PCR_MUX(x)
 
 /*===========================================================================*/
@@ -67,7 +75,7 @@ typedef uint32_t iomode_t;
  *          any assumption about it, use the provided macros when populating
  *          variables of this type.
  */
-typedef uint32_t ioportid_t;
+typedef GPIO_TypeDef *ioportid_t;
 
 /**
  * @brief   Port Configuration.
@@ -101,7 +109,11 @@ typedef struct {
  * @details Low level drivers can define multiple ports, it is suggested to
  *          use this naming convention.
  */
-#define IOPORT1         0
+#define IOPORT1          GPIOA
+#define IOPORT2          GPIOB
+#define IOPORT3          GPIOC
+#define IOPORT4          GPIOD
+#define IOPORT5          GPIOE
 
 /*===========================================================================*/
 /* Implementation, some of the following macros could be implemented as      */
@@ -125,7 +137,7 @@ typedef struct {
  *
  * @notapi
  */
-#define pal_lld_readport(port) 0
+#define pal_lld_readport(port) (port)->PDIR
 
 /**
  * @brief   Reads the output latch.
@@ -232,7 +244,7 @@ typedef struct {
  *
  * @notapi
  */
-#define pal_lld_setgroupmode(port, mask, offset, mode)                      \
+#define pal_lld_setgroupmode(port, mask, offset, mode) \
   _pal_lld_setgroupmode(port, mask << offset, mode)
 
 /**
@@ -249,7 +261,7 @@ typedef struct {
  *
  * @notapi
  */
-#define pal_lld_readpad(port, pad) PAL_LOW
+#define pal_lld_readpad(port, pad) _pal_lld_readpad(port, pad)
 
 /**
  * @brief   Writes a logical state on an output pad.
@@ -266,7 +278,7 @@ typedef struct {
  *
  * @notapi
  */
-#define pal_lld_writepad(port, pad, bit)
+#define pal_lld_writepad(port, pad, bit) _pal_lld_writepad(port, pad, bit)
 
 /**
  * @brief   Sets a pad logical state to @p PAL_HIGH.
@@ -279,7 +291,7 @@ typedef struct {
  *
  * @notapi
  */
-#define pal_lld_setpad(port, pad)
+#define pal_lld_setpad(port, pad) (port)->PSOR |= ((uint32_t) 1 << (pad))
 
 /**
  * @brief   Clears a pad logical state to @p PAL_LOW.
@@ -292,7 +304,7 @@ typedef struct {
  *
  * @notapi
  */
-#define pal_lld_clearpad(port, pad)
+#define pal_lld_clearpad(port, pad) (port)->PCOR |= ((uint32_t) 1 << (pad))
 
 /**
  * @brief   Toggles a pad logical state.
@@ -305,7 +317,7 @@ typedef struct {
  *
  * @notapi
  */
-#define pal_lld_togglepad(port, pad)
+#define pal_lld_togglepad(port, pad) (port)->PTOR |= ((uint32_t) 1 << (pad))
 
 /**
  * @brief   Pad mode setup.
@@ -321,7 +333,8 @@ typedef struct {
  *
  * @notapi
  */
-#define pal_lld_setpadmode(port, pad, mode)
+#define pal_lld_setpadmode(port, pad, mode) \
+    _pal_lld_setpadmode(port, pad, mode)
 
 #if !defined(__DOXYGEN__)
 extern const PALConfig pal_default_config;
