@@ -51,7 +51,7 @@
  * @name    IRQ vector names
  * @{
  */
-#define DMA_CH0_IRQHandler      Vector40	/**< DMA channel 0               */
+#define DMA_CH0_IRQHandler      Vector40    /**< DMA channel 0               */
 #define DMA_CH1_IRQHandler      Vector44    /**< DMA channel 1               */
 #define DMA_CH2_IRQHandler      Vector48    /**< DMA channel 2               */
 #define DMA_CH3_IRQHandler      Vector4C    /**< DMA channel 3               */
