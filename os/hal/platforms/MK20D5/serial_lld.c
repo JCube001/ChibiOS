@@ -15,8 +15,8 @@
 */
 
 /**
- * @file    templates/serial_lld.c
- * @brief   Serial Driver subsystem low level driver source template.
+ * @file    MK20D5/serial_lld.c
+ * @brief   Serial Driver subsystem low level driver source.
  *
  * @addtogroup SERIAL
  * @{
