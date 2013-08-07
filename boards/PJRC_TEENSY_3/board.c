@@ -25,7 +25,88 @@
  */
 const PALConfig pal_default_config =
 {
-
+    .ports = {
+        {
+            .port = IOPORT1,
+            .pads = {
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET
+            },
+        },
+        {
+            .port = IOPORT2,
+            .pads = {
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET
+            },
+        },
+        {
+            .port = IOPORT3,
+            .pads = {
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_OUTPUT_PUSHPULL,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET
+            },
+        },
+        {
+            .port = IOPORT4,
+            .pads = {
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET
+            },
+        },
+        {
+            .port = IOPORT5,
+            .pads = {
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
+                PAL_MODE_RESET,      PAL_MODE_RESET
+            },
+        },
+    },
 };
 #endif
 
