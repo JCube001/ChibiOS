@@ -132,7 +132,7 @@ typedef enum IRQn
   #pragma push
   #pragma cpp_extensions on
 #elif defined(__GNUC__)
-  /* anonymous unions are enabled by default */
+  /* Anonymous unions are enabled by default */
 #elif defined(__IAR_SYSTEMS_ICC__)
   #pragma language=extended
 #else
@@ -255,14 +255,14 @@ typedef struct
     __IO uint32_t ERQ;                  /**< Enable Request Register, offset: 0xC */
          uint8_t  RESERVED_1[4];
     __IO uint32_t EEI;                  /**< Enable Error Interrupt Register, offset: 0x14 */
-    __O  uint8_t CEEI;                  /**< Clear Enable Error Interrupt Register, offset: 0x18 */
-    __O  uint8_t SEEI;                  /**< Set Enable Error Interrupt Register, offset: 0x19 */
-    __O  uint8_t CERQ;                  /**< Clear Enable Request Register, offset: 0x1A */
-    __O  uint8_t SERQ;                  /**< Set Enable Request Register, offset: 0x1B */
-    __O  uint8_t CDNE;                  /**< Clear DONE Status Bit Register, offset: 0x1C */
-    __O  uint8_t SSRT;                  /**< Set START Bit Register, offset: 0x1D */
-    __O  uint8_t CERR;                  /**< Clear Error Register, offset: 0x1E */
-    __O  uint8_t CINT;                  /**< Clear Interrupt Request Register, offset: 0x1F */
+    __O  uint8_t  CEEI;                  /**< Clear Enable Error Interrupt Register, offset: 0x18 */
+    __O  uint8_t  SEEI;                  /**< Set Enable Error Interrupt Register, offset: 0x19 */
+    __O  uint8_t  CERQ;                  /**< Clear Enable Request Register, offset: 0x1A */
+    __O  uint8_t  SERQ;                  /**< Set Enable Request Register, offset: 0x1B */
+    __O  uint8_t  CDNE;                  /**< Clear DONE Status Bit Register, offset: 0x1C */
+    __O  uint8_t  SSRT;                  /**< Set START Bit Register, offset: 0x1D */
+    __O  uint8_t  CERR;                  /**< Clear Error Register, offset: 0x1E */
+    __O  uint8_t  CINT;                  /**< Clear Interrupt Request Register, offset: 0x1F */
          uint8_t  RESERVED_2[4];
     __IO uint32_t INT;                  /**< Interrupt Request Register, offset: 0x24 */
          uint8_t  RESERVED_3[4];
@@ -270,11 +270,11 @@ typedef struct
          uint8_t  RESERVED_4[4];
     __IO uint32_t HRS;                  /**< Hardware Request Status Register, offset: 0x34 */
          uint8_t  RESERVED_5[200];
-    __IO uint8_t DCHPRI3;               /**< Channel n Priority Register, offset: 0x100 */
-    __IO uint8_t DCHPRI2;               /**< Channel n Priority Register, offset: 0x101 */
-    __IO uint8_t DCHPRI1;               /**< Channel n Priority Register, offset: 0x102 */
-    __IO uint8_t DCHPRI0;               /**< Channel n Priority Register, offset: 0x103 */
-         uint8_t RESERVED_6[3836];
+    __IO uint8_t  DCHPRI3;               /**< Channel n Priority Register, offset: 0x100 */
+    __IO uint8_t  DCHPRI2;               /**< Channel n Priority Register, offset: 0x101 */
+    __IO uint8_t  DCHPRI1;               /**< Channel n Priority Register, offset: 0x102 */
+    __IO uint8_t  DCHPRI0;               /**< Channel n Priority Register, offset: 0x103 */
+         uint8_t  RESERVED_6[3836];
     struct {                            /* offset: 0x1000, array step: 0x20 */
         __IO uint32_t SADDR;                /**< TCD Source Address, array offset: 0x1000, array step: 0x20 */
         __IO uint16_t SOFF;                 /**< TCD Signed Source Address Offset, array offset: 0x1004, array step: 0x20 */
@@ -823,13 +823,13 @@ typedef struct
  */
 typedef struct
 {
-    __IO uint32_t CONTROL;                                /**< Control Register, offset: 0x0 */
-    __IO uint32_t CLOCK;                                  /**< Clock Register, offset: 0x4 */
-    __I  uint32_t STATUS;                                 /**< Status Register, offset: 0x8 */
+    __IO uint32_t CONTROL;              /**< Control Register, offset: 0x0 */
+    __IO uint32_t CLOCK;                /**< Clock Register, offset: 0x4 */
+    __I  uint32_t STATUS;               /**< Status Register, offset: 0x8 */
          uint8_t  RESERVED_0[4];
-    __IO uint32_t TIMER0;                                 /**< TIMER0 Register, offset: 0x10 */
-    __IO uint32_t TIMER1;                                 /**< , offset: 0x14 */
-    __IO uint32_t TIMER2;                                 /**< , offset: 0x18 */
+    __IO uint32_t TIMER0;               /**< TIMER0 Register, offset: 0x10 */
+    __IO uint32_t TIMER1;               /**< , offset: 0x14 */
+    __IO uint32_t TIMER2;               /**< , offset: 0x18 */
 } USBCD_TypeDef;
 
 /**
@@ -868,7 +868,7 @@ typedef struct
 #elif defined(__CWCC__)
   #pragma pop
 #elif defined(__GNUC__)
-  /* leave anonymous unions enabled */
+  /* Leave anonymous unions enabled */
 #elif defined(__IAR_SYSTEMS_ICC__)
   #pragma language=default
 #else
@@ -883,39 +883,120 @@ typedef struct
   * @{
   */
 #define ADC_BASE            ((uint32_t)0x4003B000)
-#define CMP_BASE
-#define CMT_BASE
-#define CRC_BASE
-#define DMA_BASE
-#define DMAMUX_BASE
-#define FTFL_BASE
-#define FTM_BASE
-#define GPIO_BASE
-#define I2C_BASE
-#define I2S_BASE
-#define LLWU_BASE
-#define LPTMR_BASE
-#define MCG_BASE
-#define OSC_BASE
-#define PDB_BASE
-#define PIT_BASE
-#define PMC_BASE
-#define PORT_BASE
-#define RCM_BASE
-#define RTC_BASE
-#define SIM_BASE
-#define SMC_BASE
-#define SPI_BASE
-#define TSI_BASE
-#define UART_BASE
-#define USB_BASE
-#define USBCD_BASE
-#define VREF_BASE
-#define WDOG_BASE
+#define CMP0_BASE           ((uint32_t)0x40073000)
+#define CMP1_BASE           ((uint32_t)0x40073008)
+#define CMT_BASE            ((uint32_t)0x40062000)
+#define CRC_BASE            ((uint32_t)0x40032000)
+#define DMA_BASE            ((uint32_t)0x40008000)
+#define DMA_TCD0_BASE       ((uint32_t)0x40009000)
+#define DMA_TCD1_BASE       ((uint32_t)0x40009020)
+#define DMA_TCD2_BASE       ((uint32_t)0x40009040)
+#define DMA_TCD3_BASE       ((uint32_t)0x40009060)
+#define DMAMUX_BASE         ((uint32_t)0x40021000)
+#define EWM_BASE            ((uint32_t)0x40061000)
+#define FTFL_BASE           ((uint32_t)0x40020000)
+#define FTM0_BASE           ((uint32_t)0x40038000)
+#define FTM1_BASE           ((uint32_t)0x40039000)
+#define GPIOA_BASE          ((uint32_t)0x400FF000)
+#define GPIOB_BASE          ((uint32_t)0x400FF040)
+#define GPIOC_BASE          ((uint32_t)0x400FF080)
+#define GPIOD_BASE          ((uint32_t)0x400FF0C0)
+#define GPIOE_BASE          ((uint32_t)0x400FF100)
+#define I2C_BASE            ((uint32_t)0x40066000)
+#define I2S_BASE            ((uint32_t)0x4002F000)
+#define LLWU_BASE           ((uint32_t)0x4007C000)
+#define LPTMR_BASE          ((uint32_t)0x40040000)
+#define MCG_BASE            ((uint32_t)0x40064000)
+#define OSC_BASE            ((uint32_t)0x40065000)
+#define PDB_BASE            ((uint32_t)0x40036000)
+#define PIT_BASE            ((uint32_t)0x40037000)
+#define PMC_BASE            ((uint32_t)0x4007D000)
+#define PORTA_BASE          ((uint32_t)0x40049000)
+#define PORTB_BASE          ((uint32_t)0x4004A000)
+#define PORTC_BASE          ((uint32_t)0x4004B000)
+#define PORTD_BASE          ((uint32_t)0x4004C000)
+#define PORTE_BASE          ((uint32_t)0x4004D000)
+#define RCM_BASE            ((uint32_t)0x4007F000)
+#define RTC_BASE            ((uint32_t)0x4003D000)
+#define SIM_BASE            ((uint32_t)0x40047000)
+#define SMC_BASE            ((uint32_t)0x4007E000)
+#define SPI_BASE            ((uint32_t)0x4002C000)
+#define TSI_BASE            ((uint32_t)0x40045000)
+#define UART0_BASE          ((uint32_t)0x4006A000)
+#define UART1_BASE          ((uint32_t)0x4006B000)
+#define UART2_BASE          ((uint32_t)0x4006C000)
+#define USB_BASE            ((uint32_t)0x40072000)
+#define USBCD_BASE          ((uint32_t)0x40035000)
+#define VREF_BASE           ((uint32_t)0x40074000)
+#define WDOG_BASE           ((uint32_t)0x40052000)
 
 /*
  * @}
  */ /* Peripheral_memory_map */
+
+/** @addtogroup Peripheral_declaration
+  * @{
+  */
+#define ADC                 ((ADC_TypeDef *)    ADC_BASE)
+#define CMP0                ((CMP_TypeDef *)    CMP0_BASE)
+#define CMP1                ((CMP_TypeDef *)    CMP1_BASE)
+#define CMT                 ((CMT_TypeDef *)    CMT_BASE)
+#define CRC                 ((CRC_TypeDef *)    CRC_BASE)
+#define DMA                 ((DMA_TypeDef *)    DMA_BASE)
+#define DMA_TCD0            ((DMA_TypeDef *)    DMA_TCD0_BASE)
+#define DMA_TCD1            ((DMA_TypeDef *)    DMA_TCD1_BASE)
+#define DMA_TCD2            ((DMA_TypeDef *)    DMA_TCD2_BASE)
+#define DMA_TCD3            ((DMA_TypeDef *)    DMA_TCD3_BASE)
+#define DMAMUX              ((DMAMUX_TypeDef *) DMAMUX_BASE)
+#define EWM                 ((EWM_TypeDef *)    EWM_BASE)
+#define FTFL                ((FTFL_TypeDef *)   FTFL_BASE)
+#define FTM0                ((FTM_TypeDef *)    FTM0_BASE)
+#define FTM1                ((FTM_TypeDef *)    FTM1_BASE)
+#define GPIOA               ((GPIO_TypeDef *)   GPIOA_BASE)
+#define GPIOB               ((GPIO_TypeDef *)   GPIOB_BASE)
+#define GPIOC               ((GPIO_TypeDef *)   GPIOC_BASE)
+#define GPIOD               ((GPIO_TypeDef *)   GPIOD_BASE)
+#define GPIOE               ((GPIO_TypeDef *)   GPIOE_BASE)
+#define I2C                 ((I2C_TypeDef *)    I2C_BASE)
+#define I2S                 ((I2S_TypeDef *)    I2S_BASE)
+#define LLWU                ((LLWU_TypeDef *)   LLWU_BASE)
+#define LPTMR               ((LPTMR_TypeDef *)  LPTMR_BASE)
+#define MCG                 ((MCG_TypeDef *)    MCG_BASE)
+#define OSC                 ((OSC_TypeDef *)    OSC_BASE)
+#define PDB                 ((PDB_TypeDef *)    PDB_BASE)
+#define PIT                 ((PIT_TypeDef *)    PIT_BASE)
+#define PMC                 ((PMC_TypeDef *)    PMC_BASE)
+#define PORTA               ((PORT_TypeDef *)   PORTA_BASE)
+#define PORTB               ((PORT_TypeDef *)   PORTB_BASE)
+#define PORTC               ((PORT_TypeDef *)   PORTC_BASE)
+#define PORTD               ((PORT_TypeDef *)   PORTD_BASE)
+#define PORTE               ((PORT_TypeDef *)   PORTE_BASE)
+#define RCM                 ((RCM_TypeDef *)    RCM_BASE)
+#define RTC                 ((RTC_TypeDef *)    RTC_BASE)
+#define SIM                 ((SIM_TypeDef *)    SIM_BASE)
+#define SMC                 ((SMC_TypeDef *)    SMC_BASE)
+#define SPI                 ((SPI_TypeDef *)    SPI_BASE)
+#define TSI                 ((TSI_TypeDef *)    TSI_BASE)
+#define UART0               ((UART_TypeDef *)   UART0_BASE)
+#define UART1               ((UART_TypeDef *)   UART1_BASE)
+#define UART2               ((UART_TypeDef *)   UART2_BASE)
+#define USB                 ((USB_TypeDef *)    USB_BASE)
+#define USBCD               ((USBCD_TypeDef *)  USBCD_BASE)
+#define VREF                ((VREF_TypeDef *)   VREF_BASE)
+#define WDOG                ((WDOG_TypeDef *)   WDOG_BASE)
+
+/**
+ * @}
+ */ /* Peripheral_declaration */
+
+/** @addtogroup Peripheral_registers_bits_definition
+ *  @{
+ */
+
+
+/**
+ * @}
+ */ /* Peripheral_registers_bits_definition */
 
 #ifdef __cplusplus
 }
