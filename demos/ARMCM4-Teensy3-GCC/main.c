@@ -56,10 +56,9 @@ int main(void) {
     chThdCreateStatic(waThread1, sizeof(waThread1), NORMALPRIO,
                       (tfunc_t)Thread1, NULL);
 
-    /*
-     * Halt if the thread dies for any reason.
-     */
-    chSysHalt();
+    while (TRUE) {
+        chThdSleepMilliseconds(1000);
+    }
 
     return 0;
 }
