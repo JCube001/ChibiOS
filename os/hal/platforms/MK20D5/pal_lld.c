@@ -129,7 +129,8 @@ void _pal_lld_setpadmode(ioportid_t port,
     case PAL_MODE_RESET:
     case PAL_MODE_INPUT:
     case PAL_MODE_OUTPUT_PUSHPULL:
-        portcfg->PCR[pad] = PIN_MUX_ALTERNATIVE(1);
+        portcfg->PCR[pad] = PIN_MUX_ALTERNATIVE(1) |
+                            PORT_PCR_DSE_MASK;
         break;
     case PAL_MODE_INPUT_PULLUP:
         portcfg->PCR[pad] = PIN_MUX_ALTERNATIVE(1) |

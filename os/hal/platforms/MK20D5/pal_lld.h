@@ -105,14 +105,28 @@ typedef struct {
 /*===========================================================================*/
 
 /**
- * @brief   First I/O port identifier.
- * @details Low level drivers can define multiple ports, it is suggested to
- *          use this naming convention.
+ * @brief   GPIO port A identifier.
  */
 #define IOPORT1          GPIOA
+
+/**
+ * @brief   GPIO port B identifier.
+ */
 #define IOPORT2          GPIOB
+
+/**
+ * @brief   GPIO port C identifier.
+ */
 #define IOPORT3          GPIOC
+
+/**
+ * @brief   GPIO port D identifier.
+ */
 #define IOPORT4          GPIOD
+
+/**
+ * @brief   GPIO port E identifier.
+ */
 #define IOPORT5          GPIOE
 
 /*===========================================================================*/
