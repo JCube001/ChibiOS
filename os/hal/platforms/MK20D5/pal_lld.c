@@ -58,6 +58,7 @@
  * @notapi
  */
 uint8_t _pal_lld_readpad(ioportid_t port, uint8_t pad) {
+
     return (port->PDIR & ((uint32_t) 1 << pad)) ? PAL_HIGH : PAL_LOW;
 }
 
@@ -76,8 +77,8 @@ uint8_t _pal_lld_readpad(ioportid_t port, uint8_t pad) {
  *
  * @notapi
  */
-void _pal_lld_writepad(ioportid_t port, uint8_t pad, uint8_t bit)
-{
+void _pal_lld_writepad(ioportid_t port, uint8_t pad, uint8_t bit) {
+
     if (bit == PAL_HIGH)
         port->PDOR |= ((uint32_t) 1 << pad);
     else

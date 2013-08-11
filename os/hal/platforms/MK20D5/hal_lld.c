@@ -168,9 +168,9 @@ void mk20d5_clock_init(void) {
 
     /* USB uses PLL clock, trace is CPU clock, CLKOUT = OSCERCLK0 */
     SIM->SOPT2 = SIM_SOPT2_USBSRC_MASK |
-                SIM_SOPT2_PLLFLLSEL_MASK |
-                SIM_SOPT2_TRACECLKSEL_MASK |
-                SIM_SOPT2_CLKOUTSEL(6);
+                 SIM_SOPT2_PLLFLLSEL_MASK |
+                 SIM_SOPT2_TRACECLKSEL_MASK |
+                 SIM_SOPT2_CLKOUTSEL(6);
 }
 
 /** @} */
