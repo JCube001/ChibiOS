@@ -16,22 +16,19 @@
 
 #include "ch.h"
 #include "hal.h"
-
-/*
- * Working area for the LED blinker thread.
- */
-static WORKING_AREA(waThread1, 64);
+#include "test.h"
 
 /*
  * LED blinker thread.
  */
+static WORKING_AREA(waThread1, 64);
 __attribute__((noreturn))
 static void Thread1(void *arg) {
-    (void)arg;
 
+    (void)arg;
     chRegSetThreadName("LEDBlinker");
     while (TRUE) {
-        palTogglePad(IOPORT3, 5);
+        palTogglePad(IOPORT3, PORTC_TEENSY_PIN13);
         chThdSleepMilliseconds(500);
     }
 }

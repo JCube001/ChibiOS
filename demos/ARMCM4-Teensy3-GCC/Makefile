@@ -15,7 +15,7 @@ endif
 
 # C++ specific options here (added to USE_OPT).
 ifeq ($(USE_CPPOPT),)
-  USE_CPPOPT = -fno-rtti -fno-exceptions
+  USE_CPPOPT = -fno-rtti
 endif
 
 # Enable this if you want the linker to remove unused code and data
@@ -59,6 +59,7 @@ include $(CHIBIOS)/os/hal/platforms/MK20D5/platform.mk
 include $(CHIBIOS)/os/hal/hal.mk
 include $(CHIBIOS)/os/ports/GCC/ARMCMx/MK20D5/port.mk
 include $(CHIBIOS)/os/kernel/kernel.mk
+include $(CHIBIOS)/test/test.mk
 
 # Define linker script file here
 LDSCRIPT= $(PORTLD)/MK20DX128.ld
@@ -67,6 +68,7 @@ LDSCRIPT= $(PORTLD)/MK20DX128.ld
 # setting.
 CSRC = $(PORTSRC) \
        $(KERNSRC) \
+       $(TESTSRC) \
        $(HALSRC) \
        $(PLATFORMSRC) \
        $(BOARDSRC) \
@@ -99,7 +101,7 @@ TCPPSRC =
 # List ASM source files here
 ASMSRC = $(PORTASM)
 
-INCDIR = $(PORTINC) $(KERNINC) \
+INCDIR = $(PORTINC) $(KERNINC) $(TESTINC) \
          $(HALINC) $(PLATFORMINC) $(BOARDINC)
 
 #

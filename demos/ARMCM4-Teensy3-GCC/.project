@@ -34,5 +34,10 @@
 			<type>2</type>
 			<location>/home/jacob/git/ChibiOS/os</location>
 		</link>
+		<link>
+			<name>test</name>
+			<type>2</type>
+			<location>/home/jacob/git/ChibiOS/test</location>
+		</link>
 	</linkedResources>
 </projectDescription>
