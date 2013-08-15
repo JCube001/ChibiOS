@@ -27,83 +27,137 @@ const PALConfig pal_default_config =
 {
     .ports = {
         {
+            /*
+             * PORTA setup.
+             *
+             * PTA4  - PIN33
+             * PTA5  - PIN24
+             * PTA12 - PIN3
+             * PTA13 - PIN4
+             */
             .port = IOPORT1,
             .pads = {
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_OUTPUT_PUSHPULL,   PAL_MODE_OUTPUT_PUSHPULL,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_OUTPUT_PUSHPULL,   PAL_MODE_OUTPUT_PUSHPULL,   PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
             },
         },
         {
+            /*
+             * PORTB setup.
+             *
+             * PTB0  - PIN16
+             * PTB1  - PIN17
+             * PTB2  - PIN19
+             * PTB3  - PIN18
+             * PTB16 - PIN0
+             * PTB17 - PIN1
+             * PTB18 - PIN32
+             * PTB19 - PIN25
+             */
             .port = IOPORT2,
             .pads = {
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET
+                PAL_MODE_OUTPUT_PUSHPULL,   PAL_MODE_OUTPUT_PUSHPULL,   PAL_MODE_OUTPUT_PUSHPULL,
+                PAL_MODE_OUTPUT_PUSHPULL,   PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_OUTPUT_PUSHPULL,   PAL_MODE_OUTPUT_PUSHPULL,
+                PAL_MODE_OUTPUT_PUSHPULL,   PAL_MODE_OUTPUT_PUSHPULL,   PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
             },
         },
         {
+            /*
+             * PORTC setup.
+             *
+             * PTC0  - PIN15
+             * PTC1  - PIN22
+             * PTC2  - PIN23
+             * PTC3  - PIN9
+             * PTC4  - PIN10
+             * PTC5  - PIN13
+             * PTC6  - PIN11
+             * PTC7  - PIN12
+             * PTC8  - PIN28
+             * PTC9  - PIN27
+             * PTC10 - PIN29
+             * PTC11 - PIN30
+             */
             .port = IOPORT3,
             .pads = {
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_OUTPUT_PUSHPULL,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET
+                PAL_MODE_OUTPUT_PUSHPULL,   PAL_MODE_OUTPUT_PUSHPULL,   PAL_MODE_OUTPUT_PUSHPULL,
+                PAL_MODE_OUTPUT_PUSHPULL,   PAL_MODE_OUTPUT_PUSHPULL,   PAL_MODE_OUTPUT_PUSHPULL,
+                PAL_MODE_OUTPUT_PUSHPULL,   PAL_MODE_OUTPUT_PUSHPULL,   PAL_MODE_OUTPUT_PUSHPULL,
+                PAL_MODE_OUTPUT_PUSHPULL,   PAL_MODE_OUTPUT_PUSHPULL,   PAL_MODE_OUTPUT_PUSHPULL,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
             },
         },
         {
+            /*
+             * PORTD setup.
+             *
+             * PTD0  - PIN2
+             * PTD1  - PIN14
+             * PTD2  - PIN7
+             * PTD3  - PIN8
+             * PTD4  - PIN6
+             * PTD5  - PIN20
+             * PTD6  - PIN21
+             * PTD7  - PIN5
+             */
             .port = IOPORT4,
             .pads = {
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET
+                PAL_MODE_OUTPUT_PUSHPULL,   PAL_MODE_OUTPUT_PUSHPULL,   PAL_MODE_OUTPUT_PUSHPULL,
+                PAL_MODE_OUTPUT_PUSHPULL,   PAL_MODE_OUTPUT_PUSHPULL,   PAL_MODE_OUTPUT_PUSHPULL,
+                PAL_MODE_OUTPUT_PUSHPULL,   PAL_MODE_OUTPUT_PUSHPULL,   PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
             },
         },
         {
+            /*
+             * PORTE setup.
+             *
+             * PTE0  - PIN31
+             * PTE1  - PIN26
+             */
             .port = IOPORT5,
             .pads = {
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET,      PAL_MODE_RESET,
-                PAL_MODE_RESET,      PAL_MODE_RESET
+                PAL_MODE_OUTPUT_PUSHPULL,   PAL_MODE_OUTPUT_PUSHPULL,   PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
+                PAL_MODE_UNCONNECTED,       PAL_MODE_UNCONNECTED,
             },
         },
     },
