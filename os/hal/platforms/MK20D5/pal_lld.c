@@ -57,7 +57,8 @@
  *
  * @notapi
  */
-uint8_t _pal_lld_readpad(ioportid_t port, uint8_t pad) {
+uint8_t _pal_lld_readpad(ioportid_t port,
+                         uint8_t pad) {
 
     return (port->PDIR & ((uint32_t) 1 << pad)) ? PAL_HIGH : PAL_LOW;
 }
@@ -77,7 +78,9 @@ uint8_t _pal_lld_readpad(ioportid_t port, uint8_t pad) {
  *
  * @notapi
  */
-void _pal_lld_writepad(ioportid_t port, uint8_t pad, uint8_t bit) {
+void _pal_lld_writepad(ioportid_t port,
+                       uint8_t pad,
+                       uint8_t bit) {
 
     if (bit == PAL_HIGH)
         port->PDOR |= ((uint32_t) 1 << pad);
@@ -129,9 +132,11 @@ void _pal_lld_setpadmode(ioportid_t port,
     case PAL_MODE_RESET:
     case PAL_MODE_INPUT:
     case PAL_MODE_OUTPUT_PUSHPULL:
-        portcfg->PCR[pad] = PIN_MUX_ALTERNATIVE(1) |
-                            PORT_PCR_DSE_MASK;
+        portcfg->PCR[pad] = PIN_MUX_ALTERNATIVE(1);
         break;
+    case PAL_MODE_OUTPUT_OPENDRAIN:
+        portcfg->PCR[pad] = PIN_MUX_ALTERNATIVE(1) |
+                            PORT_PCR_ODE_MASK;
     case PAL_MODE_INPUT_PULLUP:
         portcfg->PCR[pad] = PIN_MUX_ALTERNATIVE(1) |
                             PORT_PCR_PE_MASK |
@@ -196,6 +201,7 @@ void _pal_lld_init(const PALConfig *config) {
                   SIM_SCGC5_PORTD_MASK |
                   SIM_SCGC5_PORTE_MASK;
 
+    /* Initial PORT and GPIO setup */
     for (i = 0; i < TOTAL_PORTS; i++) {
         for (j = 0; j < PADS_PER_PORT; j++) {
             pal_lld_setpadmode(config->ports[i].port,
@@ -220,10 +226,13 @@ void _pal_lld_setgroupmode(ioportid_t port,
                            ioportmask_t mask,
                            iomode_t mode) {
 
-  (void)port;
-  (void)mask;
-  (void)mode;
+    int i;
 
+    (void)mask;
+
+    for (i = 0; i < PADS_PER_PORT; i++) {
+        pal_lld_setpadmode(port, i, mode);
+    }
 }
 
 #endif /* HAL_USE_PAL */

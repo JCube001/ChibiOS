@@ -31,13 +31,13 @@
 /* Unsupported modes and specific modes                                      */
 /*===========================================================================*/
 
-#define PAL_MODE_ALTERNATIVE_1      0x10
-#define PAL_MODE_ALTERNATIVE_2      0x11
-#define PAL_MODE_ALTERNATIVE_3      0x12
-#define PAL_MODE_ALTERNATIVE_4      0x13
-#define PAL_MODE_ALTERNATIVE_5      0x14
-#define PAL_MODE_ALTERNATIVE_6      0x15
-#define PAL_MODE_ALTERNATIVE_7      0x16
+#define PAL_MODE_ALTERNATIVE_1      10
+#define PAL_MODE_ALTERNATIVE_2      11
+#define PAL_MODE_ALTERNATIVE_3      12
+#define PAL_MODE_ALTERNATIVE_4      13
+#define PAL_MODE_ALTERNATIVE_5      14
+#define PAL_MODE_ALTERNATIVE_6      15
+#define PAL_MODE_ALTERNATIVE_7      16
 
 #define PIN_MUX_ALTERNATIVE(x)      PORT_PCR_MUX(x)
 
@@ -45,8 +45,8 @@
 /* I/O Ports Types and constants.                                            */
 /*===========================================================================*/
 
-#define TOTAL_PORTS      5
-#define PADS_PER_PORT    32
+#define TOTAL_PORTS                 5
+#define PADS_PER_PORT               32
 
 /**
  * @brief   Width, in bits, of an I/O port.
@@ -83,8 +83,8 @@ typedef GPIO_TypeDef *ioportid_t;
  *          belonging to a port.
  */
 typedef struct {
-    ioportid_t  port;
-    iomode_t    pads[PADS_PER_PORT];
+    ioportid_t      port;
+    iomode_t        pads[PADS_PER_PORT];
 } PortConfig;
 
 /**
@@ -97,7 +97,7 @@ typedef struct {
  *          architecture dependent, fields.
  */
 typedef struct {
-    PortConfig  ports[TOTAL_PORTS];
+    PortConfig      ports[TOTAL_PORTS];
 } PALConfig;
 
 /*===========================================================================*/
@@ -163,7 +163,7 @@ typedef struct {
  *
  * @notapi
  */
-#define pal_lld_readlatch(port) 0
+#define pal_lld_readlatch(port) (port)->PDOR
 
 /**
  * @brief   Writes a bits mask on a I/O port.
@@ -173,7 +173,7 @@ typedef struct {
  *
  * @notapi
  */
-#define pal_lld_writeport(port, bits)
+#define pal_lld_writeport(port, bits) (port)->PDOR = (bits)
 
 /**
  * @brief   Sets a bits mask on a I/O port.
@@ -186,7 +186,7 @@ typedef struct {
  *
  * @notapi
  */
-#define pal_lld_setport(port, bits)
+#define pal_lld_setport(port, bits) (port)->PSOR |= (bits)
 
 /**
  * @brief   Clears a bits mask on a I/O port.
@@ -199,7 +199,7 @@ typedef struct {
  *
  * @notapi
  */
-#define pal_lld_clearport(port, bits)
+#define pal_lld_clearport(port, bits) (port)->PCOR |= (bits)
 
 /**
  * @brief   Toggles a bits mask on a I/O port.
@@ -208,11 +208,11 @@ typedef struct {
  *          special hardware functionalities or special coding.
  *
  * @param[in] port      port identifier
- * @param[in] bits      bits to be XORed on the specified port
+ * @param[in] bits      bits to be toggled on the specified port
  *
  * @notapi
  */
-#define pal_lld_toggleport(port, bits)
+#define pal_lld_toggleport(port, bits) (port)->PTOR |= (bits)
 
 /**
  * @brief   Reads a group of bits.
@@ -258,7 +258,7 @@ typedef struct {
  *
  * @notapi
  */
-#define pal_lld_setgroupmode(port, mask, offset, mode) \
+#define pal_lld_setgroupmode(port, mask, offset, mode)                      \
   _pal_lld_setgroupmode(port, mask << offset, mode)
 
 /**
@@ -347,7 +347,7 @@ typedef struct {
  *
  * @notapi
  */
-#define pal_lld_setpadmode(port, pad, mode) \
+#define pal_lld_setpadmode(port, pad, mode)                                 \
     _pal_lld_setpadmode(port, pad, mode)
 
 #if !defined(__DOXYGEN__)
