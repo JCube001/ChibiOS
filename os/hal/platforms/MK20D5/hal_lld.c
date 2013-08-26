@@ -106,6 +106,13 @@ void mk20d5_clock_init(void) {
     /* Release I/O pins hold, if just woke up from VLLS mode */
     if (PMC->REGSC & PMC_REGSC_ACKISO_MASK) PMC->REGSC |= PMC_REGSC_ACKISO_MASK;
 
+    /* Enable PORTA - crystal connected to PA18/PA19 */
+    SIM->SCGC5 |= SIM_SCGC5_PORTA_MASK;
+
+    /* EXTAL0 and XTAL0 */
+    PORTA->PCR[18] = 0;
+    PORTA->PCR[19] = 0;
+
     /*
      * Start in FEI mode
      */
